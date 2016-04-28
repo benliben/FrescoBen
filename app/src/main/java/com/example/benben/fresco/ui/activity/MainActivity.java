@@ -1,51 +1,71 @@
 package com.example.benben.fresco.ui.activity;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.benben.fresco.R;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.example.benben.fresco.model.MainModel;
+import com.example.benben.fresco.ui.adapter.MainAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MainActivity extends AppCompatActivity {
-    @InjectView(R.id.my_image_view)
-    SimpleDraweeView mImageView;
-    private Context context;
+/**
+ * Created by benben on 2016/4/28.
+ */
+public class MainActivity extends BaseActivity {
+    @InjectView(R.id.main_comment)
+    RecyclerView mComment;
+    @InjectView(R.id.topTitle)
+    TextView mTitle;
 
+    private MainAdapter mAdapter;
+    private List<MainModel> mModels;
+    private String[] mData = {"begin","ProgressBarImage"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Fresco.initialize(this, ImagePipelineConfigFactory.getOkHttpImagePipelineConfig(this));
-        Fresco.initialize(this);
         ButterKnife.inject(this);
         initData();
+        initVeiw();
     }
 
-
+    private void initVeiw() {
+        mTitle.setText("Fresco");
+        mComment.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        mAdapter = new MainAdapter(mData);
+        mComment.setAdapter(mAdapter);
+        mAdapter.setOnClickListener(new MainAdapter.OnItemClickListener() {
+            @Override
+            public void ItemClickListener(View view, int position) {
+                switch (position) {
+                    case 0:
+                        BeginActivity.startBeginActivity(MainActivity.this);
+                        break;
+                    case 1:
+                        BeginActivity.startBeginActivity(MainActivity.this);
+                        break;
+                }
+            }
+        });
+    }
 
     private void initData() {
-        Uri uri1 = Uri.parse("http://i3.hoopchina.com.cn/blogfile/201212/21/135605895528067.gif");//动态图
-        Uri uri = Uri.parse("http://www.chinanews.com/fileftp/2010/04/2010-04-02/U179P4T47D12780F970DT20100402102613.jpg");//静态图
-        mImageView = (SimpleDraweeView) findViewById(R.id.my_image_view);
-        /*如果是动态图需要添加如下代码*/
-        /***********************************************/
-        DraweeController controller = Fresco.newDraweeControllerBuilder()
-                .setUri(uri1)
-                .setAutoPlayAnimations(true)
-                .build();
-        mImageView.setController(controller);
-        /************************************************/
-
-//        mImageView.setImageURI(uri);
+        mModels = new ArrayList<>();
+        for (int i = 0; i < mData.length; i++) {
+            MainModel model = new MainModel();
+            model.setName(mData[i]);
+            mModels.add(model);
+        }
     }
 }
