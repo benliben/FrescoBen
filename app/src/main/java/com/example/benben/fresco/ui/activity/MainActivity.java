@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ public class MainActivity extends BaseActivity {
 
     private MainAdapter mAdapter;
     private List<MainModel> mModels;
-    private String[] mData = {"begin","ProgressBarImage"};
+    private String[] mData = {"begin","ProgressBarImage",""};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity {
                         BeginActivity.startBeginActivity(MainActivity.this);
                         break;
                     case 1:
-                        BeginActivity.startBeginActivity(MainActivity.this);
+                        ProgressBarImageActivity.startProgressBarImageActivity(MainActivity.this);
                         break;
                 }
             }
@@ -63,6 +64,7 @@ public class MainActivity extends BaseActivity {
     private void initData() {
         mModels = new ArrayList<>();
         for (int i = 0; i < mData.length; i++) {
+            Log.i("lyx", "initData: "+mData.length);
             MainModel model = new MainModel();
             model.setName(mData[i]);
             mModels.add(model);
