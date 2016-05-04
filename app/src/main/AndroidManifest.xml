@@ -25,7 +25,16 @@
         <activity android:name=".ui.activity.ProgressBarImageActivity"></activity>
         <!--缩放-->
         <activity android:name=".ui.activity.TheZoomActivity"></activity>
+        <!--圆-->
         <activity android:name=".ui.activity.RoundActivity"></activity>
+        <!--控制构造器-->
+        <activity android:name=".ui.activity.ControllerBuilDerActivity"></activity>
+        <!--渐变-->
+        <activity android:name=".ui.activity.ChangeJPEGActivity"></activity>
+        <!--多图请求及图片复用-->
+        <activity android:name=".ui.activity.SwitchActivity"></activity>
+        <!--监听事件-->
+        <activity android:name=".ui.activity.MonitorActivity"></activity>
     </application>
 
 </manifest>

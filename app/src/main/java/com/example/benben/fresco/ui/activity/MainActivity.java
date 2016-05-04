@@ -30,7 +30,8 @@ public class MainActivity extends BaseActivity {
 
     private MainAdapter mAdapter;
     private List<MainModel> mModels;
-    private String[] mData = {"begin","ProgressBarImage","TheZoom","Round"};
+    private String[] mData = {"begin","ProgressBarImage","TheZoom","Round","ControllerBuilder"
+    ,"ChangeJPEG","Switch","Monitor"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +62,17 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 3:
                         RoundActivity.startRoundActivity(MainActivity.this);
+                        break; case 4:
+                        ControllerBuilDerActivity.startControllerBuilDerActivity(MainActivity.this);
+                        break;
+                    case 5:
+                        ChangeJPEGActivity.startChangeJPEGAdapter(MainActivity.this);
+                        break;
+                    case 6:
+                        SwitchActivity.startSwitchActivity(MainActivity.this);
+                        break;
+                    case 7:
+                        MonitorActivity.startMonitorActivity(MainActivity.this);
                         break;
                 }
             }
@@ -70,7 +82,6 @@ public class MainActivity extends BaseActivity {
     private void initData() {
         mModels = new ArrayList<>();
         for (int i = 0; i < mData.length; i++) {
-            Log.i("lyx", "initData: "+mData.length);
             MainModel model = new MainModel();
             model.setName(mData[i]);
             mModels.add(model);
