@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
 
     private MainAdapter mAdapter;
     private List<MainModel> mModels;
-    private String[] mData = {"begin","ProgressBarImage",""};
+    private String[] mData = {"begin","ProgressBarImage","TheZoom"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +55,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 1:
                         ProgressBarImageActivity.startProgressBarImageActivity(MainActivity.this);
+                        break;
+                    case 2:
+                        TheZoomActivity.startTheZoomActivity(MainActivity.this);
                         break;
                 }
             }

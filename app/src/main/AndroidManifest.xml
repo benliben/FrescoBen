@@ -23,6 +23,8 @@
         <activity android:name=".ui.activity.BeginActivity"></activity>
         <!--进度条-->
         <activity android:name=".ui.activity.ProgressBarImageActivity"></activity>
+        <!--缩放-->
+        <activity android:name=".ui.activity.TheZoomActivity"></activity>
     </application>
 
 </manifest>
