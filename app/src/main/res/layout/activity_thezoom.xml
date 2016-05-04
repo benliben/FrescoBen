@@ -7,7 +7,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/the_zoom"
         android:layout_width="match_parent"
-        fresco:actualImageScaleType="fitCenter"
+        fresco:actualImageScaleType="focusCrop"
         android:src="@mipmap/hehe"
         android:layout_height="match_parent" />
 

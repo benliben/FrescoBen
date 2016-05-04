@@ -25,6 +25,7 @@
         <activity android:name=".ui.activity.ProgressBarImageActivity"></activity>
         <!--缩放-->
         <activity android:name=".ui.activity.TheZoomActivity"></activity>
+        <activity android:name=".ui.activity.RoundActivity"></activity>
     </application>
 
 </manifest>
